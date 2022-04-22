@@ -1,0 +1,13 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navbar') %>
+
+<div class="container">
+    <form action="/categories/save" class="form-control p-4" method="post">
+        <label for="title" class="form-label">Cadastro de categoria</label>
+        <input  id="title" type="text" name="categoria" placeholder="defina o titulo da categoria" class="mt-2 form-control">
+        <input type="submit" value="Cadastrar" class="btn btn-success mt-2">
+    </form>
+</div>
+
+
+<%- include('../../partials/footer') %>

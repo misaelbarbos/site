@@ -1,0 +1,50 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navbar') %>
+
+<div class="container">
+    <a href="/admin/categories/new" class="btn btn-success mt-2 mb-2">Criar Nova Categoria</a>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Categoris</th>
+            <th>Slug</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+           <% categories.forEach((cat)=>{%>
+                <tr>
+                    <td><%=cat.id%></td>
+                    <td><%=cat.title%></td>
+                    <td><%=cat.slug%></td>
+                    <td style="display: flex">
+
+                            <form action="/category/delete" method="post" onsubmit="confirmar(event)">
+                                <input type="hidden" name="id" value="<%-cat.id%>">
+                                <button class="btn btn-danger mx-3">Excluir</button>
+                            </form>
+                            <form action="/category/delete" method="post">
+                                <button class="btn btn-primary">Editar</button>
+                            </form>
+
+                    </td>
+
+                </tr>
+          <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function confirmar(e) {
+        let dec = confirm("Quer deletar o registro?")
+        if(dec===false){
+            e.preventDefault();
+        }
+    }
+</script>
+
+
+
+<%- include('../../partials/footer') %>
